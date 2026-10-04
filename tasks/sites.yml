@@ -1,0 +1,13 @@
+- name: start Nginx
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: true
+    
+- name: Create HTML Page
+  ansible.builtin.copy:
+    content: |
+      <h1>Welcome to {{ app_name }} </h1>
+      <p>Deployed using Ansible!</p>
+    dest: /var/www/html/index.html
+    mode: '0644'
